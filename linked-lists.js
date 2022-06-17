@@ -80,7 +80,7 @@ class LinkedList {
 
     let deletedNode = null
 
-    while (this.head && this.compare.equal(this.head.value, value)) {
+    while (this.head && (this.head.value === value)) {
       deletedNode = this.head
       this.head = this.head.next
     }
@@ -89,7 +89,7 @@ class LinkedList {
 
     if (currentNode !== null) {
       while (currentNode.next) {
-        if (this.compare.equal(currentNode.next.value, value)) {
+        if (currentNode.next.value === value) {
           deletedNode = currentNode.next
           currentNode.next = currentNode.next.next
 
@@ -99,7 +99,7 @@ class LinkedList {
       }
     }
 
-    if (this.compare.equal(this.tail.value, value)) {
+    if (this.tail.value === value) {
       this.tail = currentNode
     }
 
@@ -118,7 +118,7 @@ class LinkedList {
         return currentNode
       }
 
-      if (value !== undefined && this.compare.equal(currentNode.value, value)) {
+      if (value !== undefined && (currentNode.value === value)) {
         return currentNode
       }
 
@@ -223,6 +223,17 @@ function main() {
   console.log(linkedList.toString())
   linkedList.reverse()
   console.log(linkedList.toString())
+  console.log(linkedList.find({value: 10}))
+
+  const linkedList2 = new LinkedList();
+
+    linkedList2
+      .append({ value: 1, key: 'test1' })
+      .append({ value: 2, key: 'test2' })
+      .append({ value: 3, key: 'test3' });
+
+    const node = linkedList2.find({ callback: (value) => value.key === 'test2' });
+    console.log(node)
 }
 
 main()

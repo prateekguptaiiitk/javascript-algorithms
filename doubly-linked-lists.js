@@ -56,7 +56,7 @@ class DoublyLinkedList {
 		let currentNode = this.head
 
 		while (currentNode) {
-			if (this.compare.equal(currentNode.value, value)) {
+			if (currentNode.value === value) {
 				deletedNode = currentNode
 
 				if (deletedNode === this.head) {
@@ -100,7 +100,7 @@ class DoublyLinkedList {
         		return currentNode;
       		}
 
-		    if (value !== undefined && this.compare.equal(currentNode.value, value)) {
+		    if (value !== undefined && (currentNode.value === value)) {
         		return currentNode;
       		}
 
@@ -193,3 +193,13 @@ class DoublyLinkedList {
     	return this;
   	}
 }
+
+function main() {
+  const linkedList = new DoublyLinkedList()
+  linkedList.append(9)
+  linkedList.append(10)
+  linkedList.append(11)
+  console.log(linkedList)
+}
+
+main()
